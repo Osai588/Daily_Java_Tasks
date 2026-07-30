@@ -6,52 +6,54 @@ class Student {
 	private String stdName;
 	private int stdId;
 	private String courseName;
-	private Double totalMarks;
+	private double totalMarks;
 
-	public Student(String stdName, int stdId, String courseName, Double totalMarks) {
+	public Student(String stdName, int stdId, String courseName, double totalMarks) {
 		this.stdName = stdName;
 		this.stdId = stdId;
 		this.courseName = courseName;
 		this.totalMarks = totalMarks;
 		System.out.println("Student Record Created Succesfully");
 	}
-	public Double gettotalmarks() {
+
+	public double gettotalmarks() {
 		return totalMarks;
 	}
 
-	public void addmarks(Double marks) {
-	
-		if(marks<=0) {
+	private boolean modified = false;
+
+	public void addmarks(double marks) {
+
+		if (marks <= 0) {
 			System.out.println("invalid marks entered");
-		}
-		else {
-	     totalMarks=totalMarks+marks;
-	     System.out.println("marks updated successfully " + totalMarks);
+		} else {
+			totalMarks = totalMarks + marks;
+			modified = true;
+			System.out.println("marks updated successfully " + totalMarks);
 		}
 
 	}
 
 	public void calculateGrade() {
-		System.out.println(totalMarks);
-		if(totalMarks>=90) {
-			System.out.println("Grade A");
-		}
-		else if(totalMarks>=80 && totalMarks<= 89 ) {
-			System.out.println("Grade B");
-			
-		}
-		else if(totalMarks>=70 && totalMarks<= 79 ) {
-			System.out.println("Grade B");
-			
-		}
-		else if(totalMarks>=60 && totalMarks<= 69 ) {
-			System.out.println("Grade B");
-		}
-		else if(totalMarks>=1 && totalMarks<60 ) {
-			System.out.println("fail");
-		}
-		else {
+
+		if (modified) {
+			System.out.println(totalMarks);
+			if (totalMarks >= 90) {
+				System.out.println("Grade A");
+			} else if (totalMarks >= 80) {
+				System.out.println("Grade B");
+
+			} else if (totalMarks >= 70) {
+				System.out.println("Grade B");
+
+			} else if (totalMarks >= 60) {
+				System.out.println("Grade B");
+			} else {
+				System.out.println("fail");
+			}
+		} else {
 			System.out.println("No marks available to calculate grade");
+			System.out.println(totalMarks);
 		}
 	}
 
@@ -74,7 +76,7 @@ public class StudentResultManagementApplicationTask {
 		String courseName = sc.nextLine();
 
 		System.out.println("enter totalmarks: ");
-		Double totalMarks = sc.nextDouble();
+		double totalMarks = sc.nextDouble();
 
 		Student std = new Student(stdName, stdId, courseName, totalMarks);
 		sc.nextLine();
@@ -87,27 +89,26 @@ public class StudentResultManagementApplicationTask {
 			System.out.println("enter the choice");
 			int choice = sc.nextInt();
 			switch (choice) {
-			case 1:{
+			case 1: {
 				System.out.println("enter the marks:");
-				Double marks=sc.nextDouble();
+				double marks = sc.nextDouble();
 				std.addmarks(marks);
 				break;
 			}
-			case 2:{
+			case 2: {
 				std.calculateGrade();
 				break;
 			}
-			case 3:{
+			case 3: {
 				System.out.println(std.gettotalmarks());
 				break;
 			}
-			case 4:{
+			case 4: {
 				System.out.println("Thank You! Result Processing Completed.");
-				exit=false;
+				exit = false;
 				break;
 			}
-			default:
-			{
+			default: {
 				System.out.println("Invalid Option");
 			}
 			}
