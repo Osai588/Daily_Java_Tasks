@@ -63,7 +63,7 @@ class Developer extends Employee {
 	@Override
 	public void displayDetails() {
 		System.out.println("Employee Name : " + getEmployeeName());
-		System.out.println("Role : Devloper");
+		System.out.println("Role : "+ getClass().getSimpleName());
 		System.out.println("Basic Salary : " + getSalary());
 		System.out.println("Allowances : " + allowances);
 		System.out.println("Final Salary : " + (allowances + getSalary()));
@@ -87,7 +87,7 @@ class Tester extends Employee {
 	@Override
 	public void displayDetails() {
 		System.out.println("Employee Name : " + getEmployeeName());
-		System.out.println("Role : Tester");
+		System.out.println("Role : "+ getClass().getSimpleName());
 		System.out.println("Basic Salary : " + getSalary());
 		System.out.println("Allowances : " + allowances);
 		System.out.println("Final Salary : " + (allowances + getSalary()));
@@ -112,7 +112,7 @@ class Manager extends Employee {
 	@Override
 	public void displayDetails() {
 		System.out.println("Employee Name : " + getEmployeeName());
-		System.out.println("Role : Manager");
+		System.out.println("Role : "+ getClass().getSimpleName());
 		System.out.println("Basic Salary : " + getSalary());
 		System.out.println("Allowances : " + allowances);
 		System.out.println("Final Salary : " + (allowances + getSalary()));
